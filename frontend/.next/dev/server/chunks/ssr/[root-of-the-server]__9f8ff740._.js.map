@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///D:/CODE/bedhed-matcha/frontend/app/menu/page.tsx"],"sourcesContent":["export default function MenuPage() {\r\n  return (\r\n    <main className=\"min-h-screen flex flex-col items-center justify-center bg-white pt-20\">\r\n      <h1 className=\"text-4xl font-bold text-green-700 font-[family-name:var(--font-playfair)]\">Menu</h1>\r\n      <p className=\"mt-4 text-lg text-gray-600\">Coming soon...</p>\r\n    </main>\r\n  );\r\n}\r\n"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACtB,qBACE,8OAAC;QAAK,WAAU;;0BACd,8OAAC;gBAAG,WAAU;0BAA4E;;;;;;0BAC1F,8OAAC;gBAAE,WAAU;0BAA6B;;;;;;;;;;;;AAGhD"}}]
-}
