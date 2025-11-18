@@ -98,6 +98,34 @@ npm run dev
 
 3. Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
+## Testing on Mobile Devices
+
+To test the mobile-responsive site on your actual phone:
+
+1. **Find your computer's local IP address:**
+   - Open PowerShell/Terminal and run:
+     ```powershell
+     ipconfig
+     ```
+   - Look for "IPv4 Address" under your active network adapter (e.g., `192.168.1.100`)
+
+2. **Make sure both servers are running** (backend on port 3001, frontend on port 3000)
+
+3. **Connect your phone to the same WiFi network** as your computer
+
+4. **On your phone's browser, visit:**
+   ```
+   http://YOUR_IP_ADDRESS:3000
+   ```
+   Example: `http://192.168.1.100:3000`
+
+**Note:** Replace `YOUR_IP_ADDRESS` with your actual local IP from step 1. The `localhost` URL only works on the same device, so you need the network IP address to access from your phone.
+
+**Troubleshooting:** If the connection doesn't work, Next.js dev server may need to accept network connections:
+```bash
+npm run dev -- -H 0.0.0.0
+```
+
 ## Features
 
 - 🍵 **Menu Display** - Handcrafted matcha drinks with images
