@@ -21,6 +21,6 @@ services:
     startCommand: "cd frontend && npm start"
     envVars:
       - key: NODE_VERSION
-        value: 18
+        value: 20.11.0
       - key: NEXT_PUBLIC_API_URL
         value: https://bedhed-matcha-backend.onrender.com
