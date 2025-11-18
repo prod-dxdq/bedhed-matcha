@@ -1,69 +1,7 @@
-[00:00:02.346] Server  LOG      ✓ Ready in 1629ms
-[00:00:06.696] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:09.512] Browser ERROR   Error loading data: {}
-[00:01:19.182] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:21.671] Browser ERROR   Error loading data: {}
-[00:02:28.099] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:07:36.240] Server  LOG      ✓ Compiled in 212ms
-[00:08:40.481] Server  LOG      ✓ Compiled in 293ms
-[00:12:32.311] Server  LOG      ✓ Compiled in 372ms
-[00:16:46.562] Server  LOG      ✓ Compiled in 295ms
-[00:17:50.576] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:20:33.902] Server  LOG      ✓ Compiled in 526ms
-[00:20:35.583] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:26:46.780] Server  LOG      ✓ Compiled in 129ms
-[00:27:08.802] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:27:10.142] Browser WARN    Image with src "/strawberry.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:27:10.142] Browser WARN    Image with src "/ein-spanner.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:27:10.142] Browser WARN    Image with src "/earl-gray.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:27:10.142] Browser WARN    Image with src "/orange-tonic.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:28:21.894] Server  LOG      ✓ Compiled in 119ms
-[00:58:37.867] Server  LOG      ✓ Compiled in 182ms
-[00:59:38.388] Server  LOG      ✓ Compiled in 124ms
-[00:59:51.262] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:59:51.873] Browser WARN    Image with src "/orange-tonic.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:59:51.873] Browser WARN    Image with src "/earl-gray.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:59:51.873] Browser WARN    Image with src "/strawberry.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[00:59:51.873] Browser WARN    Image with src "/ein-spanner.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio.
-[01:19:02.914] Server  LOG      ✓ Compiled in 239ms
-[01:19:03.021] Browser ERROR   ./frontend/app/page.tsx:173:159
-Parsing ecmascript source code failed
-  171 |           
-  172 |           <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
-> 173 |             <div className="bg-white p-6 md:p-10 rounded-2xl md:rounded-3xl border-4 md:border-6 border-blue-800 shadow-2xl">der-6 border-blue-800 shadow-2xl">
-      |                                                                                                                                                               ^
-  174 |               <h3 className="text-2xl md:text-3xl font-black text-blue-700 mb-4 md:mb-6 font-[family-name:var(--font-permanent-marker)]">Our Story</h3>
-  175 |               <p className="text-base md:text-lg text-blue-900 leading-relaxed font-bold font-[family-name:var(--font-indie-flower)]">
-  176 |                 BedHed Matcha is Dallas&apos;s premier artisanal matcha pop-up, bringing you the finest quality 
-
-Unexpected token. Did you mean `{'>'}` or `&gt;`?
-
-Import traces:
-  Client Component Browser:
-    ./frontend/app/page.tsx [Client Component Browser]
-    ./frontend/app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./frontend/app/page.tsx [Client Component SSR]
-    ./frontend/app/page.tsx [Server Component]
-[01:20:15.717] Browser ERROR   ./frontend/app/page.tsx:173:159
-Parsing ecmascript source code failed
-  171 |           
-  172 |           <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
-> 173 |             <div className="bg-white p-6 md:p-10 rounded-2xl md:rounded-3xl border-4 md:border-6 border-blue-800 shadow-2xl">der-6 border-blue-800 shadow-2xl">
-      |                                                                                                                                                               ^
-  174 |               <h3 className="text-2xl md:text-3xl font-black text-blue-700 mb-4 md:mb-6 font-[family-name:var(--font-permanent-marker)]">Our Story</h3>
-  175 |               <p className="text-base md:text-lg text-blue-900 leading-relaxed font-bold font-[family-name:var(--font-indie-flower)]">
-  176 |                 BedHed Matcha is Dallas&apos;s premier artisanal matcha pop-up, bringing you the finest quality 
-
-Unexpected token. Did you mean `{'>'}` or `&gt;`?
-
-Import traces:
-  Client Component Browser:
-    ./frontend/app/page.tsx [Client Component Browser]
-    ./frontend/app/page.tsx [Server Component]
-
-  Client Component SSR:
-    ./frontend/app/page.tsx [Client Component SSR]
-    ./frontend/app/page.tsx [Server Component]
-[01:20:48.907] Server  LOG      ✓ Compiled in 274ms
+[00:00:21.369] Server  LOG      ✓ Ready in 15.2s
+[00:00:24.639] Server  LOG      ○ Compiling / ...
+[00:00:40.003] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:42.289] Browser ERROR   Error loading data: {}
+[00:01:01.943] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:02.641] Browser WARN    Image with src "/earl-gray.png" was detected as the Largest Contentful Paint (LCP). Please add the `loading="eager"` property if this image is above the fold.
+Read more: https://nextjs.org/docs/app/api-reference/components/image#loading

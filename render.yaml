@@ -1,0 +1,26 @@
+# Render.com deployment configuration
+# This file tells Render how to deploy both your frontend and backend
+
+services:
+  # Backend Flask API
+  - type: web
+    name: bedhed-matcha-backend
+    runtime: python
+    buildCommand: "cd backend && pip install -r requirements.txt"
+    startCommand: "cd backend && gunicorn app:app"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+    healthCheckPath: /api/health
+  
+  # Frontend Next.js
+  - type: web
+    name: bedhed-matcha-frontend
+    runtime: node
+    buildCommand: "cd frontend && npm install && npm run build"
+    startCommand: "cd frontend && npm start"
+    envVars:
+      - key: NODE_VERSION
+        value: 18
+      - key: NEXT_PUBLIC_API_URL
+        sync: false

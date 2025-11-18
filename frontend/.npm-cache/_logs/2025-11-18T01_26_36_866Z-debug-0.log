@@ -1,0 +1,17 @@
+0 verbose cli D:\nodejs\node.exe D:\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@10.9.2
+2 info using node@v22.16.0
+3 silly config load:file:D:\nodejs\node_modules\npm\npmrc
+4 silly config load:file:D:\CODE\bedhed-matcha\frontend\.npmrc
+5 silly config load:file:C:\Users\willi\.npmrc
+6 silly config load:file:D:\npm-global\etc\npmrc
+7 verbose title npm run dev 0.0.0.0
+8 verbose argv "run" "dev" "--usage" "0.0.0.0"
+9 verbose logfile logs-max:10 dir:D:\CODE\bedhed-matcha\frontend\.npm-cache\_logs\2025-11-18T01_26_36_866Z-
+10 verbose logfile D:\CODE\bedhed-matcha\frontend\.npm-cache\_logs\2025-11-18T01_26_36_866Z-debug-0.log
+11 verbose cwd D:\CODE\bedhed-matcha\frontend
+12 verbose os Windows_NT 10.0.19045
+13 verbose node v22.16.0
+14 verbose npm  v10.9.2
+15 verbose exit 0
+16 info ok
