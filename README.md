@@ -1,33 +1,127 @@
-# bedhed-matcha
+# BedHed Matcha
+
+Artisanal Matcha Pop-Up in Dallas, TX
 
 This project is organized into separate frontend and backend folders.
 
 ## Project Structure
 
-- **frontend/** - Next.js application
-- **backend/** - Backend server
+- **frontend/** - Next.js 16 application with React 19 and Tailwind CSS 4
+- **backend/** - Flask Python API server
+- **public/** - Static assets (images, logo, drink photos)
+
+## Prerequisites
+
+- **Node.js** 18+ and npm (for frontend)
+- **Python** 3.8+ (for backend)
+- **pip** (Python package manager)
 
 ## Getting Started
 
-### Frontend
+### Backend Setup (Flask API)
+
+1. Navigate to the backend folder:
+```bash
+cd backend
+```
+
+2. Create a virtual environment (recommended):
+```bash
+python -m venv venv
+```
+
+3. Activate the virtual environment:
+   - **Windows (PowerShell)**:
+     ```powershell
+     .\venv\Scripts\Activate.ps1
+     ```
+   - **Windows (Command Prompt)**:
+     ```cmd
+     venv\Scripts\activate.bat
+     ```
+   - **macOS/Linux**:
+     ```bash
+     source venv/bin/activate
+     ```
+
+4. Install Python dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+5. Run the Flask server:
+```bash
+python app.py
+```
+
+The backend API will run on [http://localhost:3001](http://localhost:3001).
+
+**Backend Endpoints:**
+- `GET /api/health` - Health check
+- `GET /api/menu` - Menu items with drink images
+- `GET /api/locations` - Upcoming pop-up locations
+
+### Frontend Setup (Next.js)
+
+1. Navigate to the frontend folder:
 ```bash
 cd frontend
+```
+
+2. Install Node.js dependencies:
+```bash
 npm install
+```
+
+3. Run the development server:
+```bash
 npm run dev
 ```
 
 The frontend will run on [http://localhost:3000](http://localhost:3000).
 
-### Backend
+### Running Both Servers
+
+To run the full application, you need **both** servers running simultaneously:
+
+1. Open **Terminal 1** for the backend:
 ```bash
 cd backend
-npm install
+python app.py
+```
+
+2. Open **Terminal 2** for the frontend:
+```bash
+cd frontend
 npm run dev
 ```
 
-The backend will run on [http://localhost:3001](http://localhost:3001).
+3. Visit [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Features
+
+- 🍵 **Menu Display** - Handcrafted matcha drinks with images
+- 📍 **Location Finder** - Upcoming pop-up locations
+- 📱 **Mobile Responsive** - Optimized for all screen sizes
+- 🎨 **Hand-drawn Design** - Cartoonish, minimalist aesthetic with yellow/blue theme
+- 📧 **Contact** - Instagram and email integration
+
+## Tech Stack
+
+**Frontend:**
+- Next.js 16.0.3
+- React 19.2.0
+- TypeScript 5
+- Tailwind CSS 4
+- Google Fonts (Permanent Marker, Indie Flower)
+
+**Backend:**
+- Python 3.x
+- Flask 3.0.0
+- Flask-CORS 4.0.0
 
 ## Learn More
 
 - [Next.js Documentation](https://nextjs.org/docs)
-- [Learn Next.js](https://nextjs.org/learn)
+- [Flask Documentation](https://flask.palletsprojects.com/)
+- [Tailwind CSS](https://tailwindcss.com/docs)
