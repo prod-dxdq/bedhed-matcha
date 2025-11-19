@@ -22,5 +22,5 @@ services:
     envVars:
       - key: NODE_VERSION
         value: 20.11.0
-      - key: NEXT_PUBLIC_BEDHED_MATCHA_API
+      - key: NEXT_PUBLIC_API_URL
         value: https://bedhed-matcha-backend.onrender.com
