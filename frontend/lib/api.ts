@@ -8,6 +8,7 @@
 const getApiBaseUrl = () => {
   // If NEXT_PUBLIC_BEDHED_MATCHA_API is set (production deployment), use that
   if (process.env.NEXT_PUBLIC_BEDHED_MATCHA_API) {
+    console.log('Using production API:', process.env.NEXT_PUBLIC_BEDHED_MATCHA_API);
     return process.env.NEXT_PUBLIC_BEDHED_MATCHA_API;
   }
   
@@ -15,10 +16,13 @@ const getApiBaseUrl = () => {
     // When running in the browser locally (client-side):
     // Use the same IP address as the website, but talk to port 3001 (backend)
     // Example: If you visit 192.168.1.81:3000, it will call 192.168.1.81:3001
-    return `http://${window.location.hostname}:3001`;
+    const url = `http://${window.location.hostname}:3001`;
+    console.log('Using local API:', url);
+    return url;
   }
   // When running on the server during local development:
   // Use localhost since it's on the same computer
+  console.log('Using server API: http://localhost:3001');
   return 'http://localhost:3001';
 };
 
