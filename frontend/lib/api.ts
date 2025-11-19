@@ -5,9 +5,9 @@
 // DEVELOPER NOTE: This function dynamically builds the backend URL
 // BUSINESS OWNER NOTE: This makes your website work on your computer, phone, and when deployed online
 const getApiBaseUrl = () => {
-  // If NEXT_PUBLIC_API_URL is set (production deployment), use that
-  if (process.env.NEXT_PUBLIC_API_URL) {
-    return process.env.NEXT_PUBLIC_API_URL;
+  // If NEXT_PUBLIC_BEDHED_MATCHA_API is set (production deployment), use that
+  if (process.env.NEXT_PUBLIC_BEDHED_MATCHA_API) {
+    return process.env.NEXT_PUBLIC_BEDHED_MATCHA_API;
   }
   
   if (typeof window !== 'undefined') {
