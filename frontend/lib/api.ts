@@ -1,6 +1,7 @@
 // API CONFIGURATION
 // This file handles communication between the website (frontend) and the backend
 // It automatically figures out the right URL whether you're on your PC, phone, or online
+// Production backend: https://bedhed-matcha-backend.onrender.com
 
 // DEVELOPER NOTE: This function dynamically builds the backend URL
 // BUSINESS OWNER NOTE: This makes your website work on your computer, phone, and when deployed online
