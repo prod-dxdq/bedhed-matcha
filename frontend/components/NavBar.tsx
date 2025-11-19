@@ -26,10 +26,9 @@ export default function Navbar() {
       {/* Right side: Links */}
       <div className="flex gap-1 md:gap-3 text-sm md:text-lg">
         <button onClick={() => scrollToSection('home')} className="px-2 md:px-5 py-1 md:py-2 bg-yellow-400 text-blue-900 font-bold rounded-full hover:bg-yellow-300 hover:scale-105 transition-all shadow-md border-2 md:border-3 border-blue-900 font-[family-name:var(--font-indie-flower)] text-sm md:text-xl">Home</button>
-        <button onClick={() => scrollToSection('menu')} className="px-2 md:px-5 py-1 md:py-2 bg-yellow-400 text-blue-900 font-bold rounded-full hover:bg-yellow-300 hover:scale-105 transition-all shadow-md border-2 md:border-3 border-blue-900 font-[family-name:var(--font-indie-flower)] text-sm md:text-xl">Menu</button>
         <button onClick={() => scrollToSection('about')} className="px-2 md:px-5 py-1 md:py-2 bg-yellow-400 text-blue-900 font-bold rounded-full hover:bg-yellow-300 hover:scale-105 transition-all shadow-md border-2 md:border-3 border-blue-900 font-[family-name:var(--font-indie-flower)] text-sm md:text-xl hidden sm:block">About</button>
+        <button onClick={() => scrollToSection('menu')} className="px-2 md:px-5 py-1 md:py-2 bg-yellow-400 text-blue-900 font-bold rounded-full hover:bg-yellow-300 hover:scale-105 transition-all shadow-md border-2 md:border-3 border-blue-900 font-[family-name:var(--font-indie-flower)] text-sm md:text-xl">Menu</button>
         <button onClick={() => scrollToSection('contact')} className="px-2 md:px-5 py-1 md:py-2 bg-yellow-400 text-blue-900 font-bold rounded-full hover:bg-yellow-300 hover:scale-105 transition-all shadow-md border-2 md:border-3 border-blue-900 font-[family-name:var(--font-indie-flower)] text-sm md:text-xl hidden sm:block">Contact</button>
-        <button onClick={() => scrollToSection('locations')} className="px-2 md:px-5 py-1 md:py-2 bg-yellow-400 text-blue-900 font-bold rounded-full hover:bg-yellow-300 hover:scale-105 transition-all shadow-md border-2 md:border-3 border-blue-900 font-[family-name:var(--font-indie-flower)] text-sm md:text-xl">Find</button>
       </div>
     </nav>
   );

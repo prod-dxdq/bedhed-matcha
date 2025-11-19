@@ -72,13 +72,46 @@ export default function Home() {
             >
               View Menu
             </button>
-            <button 
-              onClick={() => document.getElementById('locations')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 md:px-10 py-4 md:py-5 bg-white text-blue-600 font-black text-lg md:text-xl rounded-full hover:bg-blue-50 transform hover:scale-105 transition-all shadow-xl border-3 md:border-4 border-blue-600 font-[family-name:var(--font-indie-flower)]"
-            >
-              Find Us
-            </button>
           </div>
+        </div>
+
+        {/* Upcoming Pop-Ups */}
+        <div className="mt-12 md:mt-16 max-w-4xl mx-4 relative z-10">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-600 mb-6 text-center font-[family-name:var(--font-permanent-marker)]">
+            UPCOMING POP-UPS
+          </h3>
+          {loading ? (
+            <div className="text-center">
+              <div className="inline-block w-12 h-12 border-6 border-yellow-400 border-t-blue-600 rounded-full animate-spin"></div>
+            </div>
+          ) : (
+            <div className="grid gap-4">
+              {locations.map((location) => (
+                <div 
+                  key={location.id} 
+                  className="bg-white p-4 md:p-6 rounded-xl md:rounded-2xl border-3 md:border-4 border-blue-600 shadow-xl"
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 bg-blue-600 rounded-full flex items-center justify-center border-2 md:border-3 border-blue-800">
+                      <svg className="w-5 h-5 md:w-6 md:h-6 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-lg md:text-xl font-black text-blue-700 mb-1 font-[family-name:var(--font-permanent-marker)]">
+                        {location.venue}
+                      </h4>
+                      <div className="space-y-0.5 text-sm md:text-base text-blue-900 font-bold font-[family-name:var(--font-indie-flower)]">
+                        <p>{location.address}</p>
+                        <p>{location.time} • {new Date(location.date).toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -233,71 +266,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Locations Section */}
-      <section id="locations" className="min-h-screen bg-yellow-100 py-24 px-8 flex items-center relative overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-20 text-blue-400 text-7xl opacity-50">★</div>
-          <div className="absolute top-40 right-40 text-blue-500 text-6xl opacity-60">★</div>
-          <div className="absolute bottom-32 left-1/3 text-blue-400 text-5xl opacity-50">★</div>
-          <div className="absolute bottom-20 right-1/4 text-blue-500 text-7xl opacity-60">★</div>
-        </div>
-
-        <div className="max-w-6xl mx-auto w-full relative z-10">
-          <div className="text-center mb-12 md:mb-20">
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-blue-600 mb-4 md:mb-6 font-[family-name:var(--font-permanent-marker)]" style={{ letterSpacing: '0.05em' }}>
-              FIND US
-            </h2>
-            <p className="text-lg sm:text-xl md:text-2xl text-blue-700 font-bold max-w-3xl mx-auto font-[family-name:var(--font-indie-flower)]">
-              We&apos;re a pop-up! Follow us to find where we&apos;ll be next
-            </p>
-          </div>
-
-          {loading ? (
-            <div className="text-center">
-              <div className="inline-block w-16 h-16 border-8 border-yellow-400 border-t-blue-600 rounded-full animate-spin"></div>
-              <p className="mt-4 text-blue-700 font-bold text-xl font-[family-name:var(--font-indie-flower)]">Loading locations...</p>
-            </div>
-          ) : (
-            <div className="grid md:grid-cols-2 gap-6">
-              {locations.map((location) => (
-                <div 
-                  key={location.id} 
-                  className="group bg-yellow-400 p-6 md:p-8 rounded-2xl md:rounded-3xl border-4 md:border-6 border-blue-800 hover:border-blue-900 transition-all duration-300 hover:-translate-y-2 shadow-2xl"
-                >
-                  <div className="flex items-start gap-3 md:gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 bg-blue-600 rounded-full flex items-center justify-center shadow-lg border-3 md:border-4 border-blue-800">
-                      <svg className="w-6 h-6 md:w-8 md:h-8 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-xl md:text-2xl font-black text-blue-700 mb-2 md:mb-3 font-[family-name:var(--font-permanent-marker)]">
-                        {location.venue}
-                      </h3>
-                      <div className="space-y-1 md:space-y-2 text-sm md:text-base text-blue-900 font-bold font-[family-name:var(--font-indie-flower)]">
-                        <p className="flex items-center gap-2">
-                          <span className="text-blue-700 font-black">•</span>
-                          {location.address}
-                        </p>
-                        <p className="flex items-center gap-2">
-                          <span className="text-blue-700 font-black">•</span>
-                          {location.time}
-                        </p>
-                        <p className="flex items-center gap-2">
-                          <span className="text-blue-700 font-black">•</span>
-                          {new Date(location.date).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
         </div>
       </section>
     </>
