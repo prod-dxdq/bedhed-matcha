@@ -15,8 +15,9 @@ const getApiBaseUrl = () => {
   if (typeof window !== 'undefined') {
     // When running in the browser locally (client-side):
     // Use the same IP address as the website, but talk to port 3001 (backend)
-    // Example: If you visit 192.168.1.81:3000, it will call 192.168.1.81:3001
-    const url = `http://${window.location.hostname}:3001`;
+    // Use https:// if the page is loaded over https, otherwise http://
+    const protocol = window.location.protocol;
+    const url = `${protocol}//${window.location.hostname}:3001`;
     console.log('Using local API:', url);
     return url;
   }
