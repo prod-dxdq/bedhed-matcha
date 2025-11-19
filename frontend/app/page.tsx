@@ -48,7 +48,7 @@ export default function Home() {
       {/* Hero Section */}
       <section
         id="home"
-        className="relative min-h-screen bg-yellow-100 flex flex-col items-center justify-center overflow-hidden"
+        className="relative min-h-screen bg-yellow-100 flex flex-col items-center justify-center overflow-hidden pt-20"
       >
         {/* Hand-drawn style stars */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
