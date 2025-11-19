@@ -115,6 +115,41 @@ export default function Home() {
         </div>
       </section>
 
+      {/* About Section */}
+      <section id="about" className="min-h-screen bg-yellow-100 py-24 px-8 flex items-center relative overflow-hidden">
+        {/* Hand-drawn stars */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
+          <div className="absolute top-20 left-10 text-blue-400 text-8xl rotate-12">★</div>
+          <div className="absolute bottom-40 right-20 text-blue-400 text-9xl -rotate-12">★</div>
+        </div>
+
+        <div className="max-w-5xl mx-auto w-full relative z-10">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-blue-600 mb-6 font-[family-name:var(--font-permanent-marker)]" style={{ letterSpacing: '0.05em' }}>
+              ABOUT US
+            </h2>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
+            <div className="bg-white p-6 md:p-10 rounded-2xl md:rounded-3xl border-4 md:border-6 border-blue-800 shadow-2xl">
+              <h3 className="text-2xl md:text-3xl font-black text-blue-700 mb-4 md:mb-6 font-[family-name:var(--font-permanent-marker)]">Our Story</h3>
+              <p className="text-base md:text-lg text-blue-900 leading-relaxed font-bold font-[family-name:var(--font-indie-flower)]">
+                BedHed Matcha is Dallas&apos;s premier artisanal matcha pop-up, bringing you the finest quality 
+                ceremonial-grade matcha sourced directly from Japan.
+              </p>
+            </div>
+            
+            <div className="bg-yellow-400 p-6 md:p-10 rounded-2xl md:rounded-3xl border-4 md:border-6 border-blue-800 shadow-2xl">
+              <h3 className="text-2xl md:text-3xl font-black text-blue-700 mb-4 md:mb-6 font-[family-name:var(--font-permanent-marker)]">Our Mission</h3>
+              <p className="text-base md:text-lg text-blue-900 leading-relaxed font-bold font-[family-name:var(--font-indie-flower)]">
+                We believe in quality, sustainability, and creating memorable experiences one cup at a time. 
+                Crafting the perfect cup that combines tradition with modern flavors.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Menu Section */}
       <section id="menu" className="min-h-screen bg-yellow-100 py-24 px-8 flex items-center relative overflow-hidden">
         {/* Hand-drawn stars */}
@@ -184,41 +219,6 @@ export default function Home() {
               ))}
             </div>
           )}
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="min-h-screen bg-yellow-100 py-24 px-8 flex items-center relative overflow-hidden">
-        {/* Hand-drawn stars */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-40">
-          <div className="absolute top-20 left-10 text-blue-400 text-8xl rotate-12">★</div>
-          <div className="absolute bottom-40 right-20 text-blue-400 text-9xl -rotate-12">★</div>
-        </div>
-
-        <div className="max-w-5xl mx-auto w-full relative z-10">
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold text-blue-600 mb-6 font-[family-name:var(--font-permanent-marker)]" style={{ letterSpacing: '0.05em' }}>
-              ABOUT US
-            </h2>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
-            <div className="bg-white p-6 md:p-10 rounded-2xl md:rounded-3xl border-4 md:border-6 border-blue-800 shadow-2xl">
-              <h3 className="text-2xl md:text-3xl font-black text-blue-700 mb-4 md:mb-6 font-[family-name:var(--font-permanent-marker)]">Our Story</h3>
-              <p className="text-base md:text-lg text-blue-900 leading-relaxed font-bold font-[family-name:var(--font-indie-flower)]">
-                BedHed Matcha is Dallas&apos;s premier artisanal matcha pop-up, bringing you the finest quality 
-                ceremonial-grade matcha sourced directly from Japan.
-              </p>
-            </div>
-            
-            <div className="bg-yellow-400 p-6 md:p-10 rounded-2xl md:rounded-3xl border-4 md:border-6 border-blue-800 shadow-2xl">
-              <h3 className="text-2xl md:text-3xl font-black text-blue-700 mb-4 md:mb-6 font-[family-name:var(--font-permanent-marker)]">Our Mission</h3>
-              <p className="text-base md:text-lg text-blue-900 leading-relaxed font-bold font-[family-name:var(--font-indie-flower)]">
-                We believe in quality, sustainability, and creating memorable experiences one cup at a time. 
-                Crafting the perfect cup that combines tradition with modern flavors.
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
