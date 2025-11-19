@@ -1,17 +1,22 @@
 // API CONFIGURATION
 // This file handles communication between the website (frontend) and the backend
-// It automatically figures out the right URL whether you're on your PC or phone
+// It automatically figures out the right URL whether you're on your PC, phone, or online
 
 // DEVELOPER NOTE: This function dynamically builds the backend URL
-// BUSINESS OWNER NOTE: This makes your website work on both your computer and phone automatically
+// BUSINESS OWNER NOTE: This makes your website work on your computer, phone, and when deployed online
 const getApiBaseUrl = () => {
+  // If NEXT_PUBLIC_API_URL is set (production deployment), use that
+  if (process.env.NEXT_PUBLIC_API_URL) {
+    return process.env.NEXT_PUBLIC_API_URL;
+  }
+  
   if (typeof window !== 'undefined') {
-    // When running in the browser (client-side):
+    // When running in the browser locally (client-side):
     // Use the same IP address as the website, but talk to port 3001 (backend)
     // Example: If you visit 192.168.1.81:3000, it will call 192.168.1.81:3001
     return `http://${window.location.hostname}:3001`;
   }
-  // When running on the server (during page build):
+  // When running on the server during local development:
   // Use localhost since it's on the same computer
   return 'http://localhost:3001';
 };
