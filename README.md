@@ -2,12 +2,18 @@
 
 Artisanal Matcha Pop-Up in Dallas, TX
 
-This project is organized into separate frontend and backend folders.
+A responsive single-page application for an artisanal matcha pop-up business using Next.js 16 and React 19, featuring dynamic menu displays and mobile-first design with custom fonts and hand-drawn aesthetic elements to match brand identity across desktop and mobile devices.
+
+Built with a REST API using Flask 3.0 to manage menu items and pop-up locations, with CORS-enabled endpoints for seamless frontend-backend communication.
+
+Deployed as a full-stack application to Render.com using Blueprint YAML configuration, implementing environment-based API routing for development and production environments.
+
+**Now powered by Azure Cosmos DB and Azure Blob Storage for scalable, cloud-based data management.**
 
 ## Project Structure
 
 - **frontend/** - Next.js 16 application with React 19 and Tailwind CSS 4
-- **backend/** - Flask Python API server
+- **backend/** - Flask Python API server with Azure Cosmos DB integration
 - **public/** - Static assets (images, logo, drink photos)
 
 ## Prerequisites
@@ -15,22 +21,38 @@ This project is organized into separate frontend and backend folders.
 - **Node.js** 18+ and npm (for frontend)
 - **Python** 3.8+ (for backend)
 - **pip** (Python package manager)
+- **Azure Account** (for database and storage - free student tier available)
 
 ## Getting Started
 
-### Backend Setup (Flask API)
+### Backend Setup (Flask API with Azure Cosmos DB)
 
 1. Navigate to the backend folder:
 ```bash
 cd backend
 ```
 
-2. Create a virtual environment (recommended):
+2. Set up Azure resources (one-time setup):
+   - Create Azure Cosmos DB account (serverless mode)
+   - Create Azure Storage Account for images
+   - See `backend/AZURE_SETUP.md` for detailed instructions
+
+3. Configure environment variables:
+```bash
+cp .env.example .env
+# Edit .env and add your Azure credentials:
+# - COSMOS_ENDPOINT
+# - COSMOS_KEY
+# - STORAGE_ACCOUNT_URL
+# - STORAGE_CONNECTION_STRING
+```
+
+4. Create a virtual environment (recommended):
 ```bash
 python -m venv venv
 ```
 
-3. Activate the virtual environment:
+5. Activate the virtual environment:
    - **Windows (PowerShell)**:
      ```powershell
      .\venv\Scripts\Activate.ps1
@@ -44,12 +66,17 @@ python -m venv venv
      source venv/bin/activate
      ```
 
-4. Install Python dependencies:
+6. Install Python dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-5. Run the Flask server:
+7. Initialize the database (first time only):
+```bash
+python init_db.py
+```
+
+8. Run the Flask server:
 ```bash
 python app.py
 ```
@@ -58,8 +85,8 @@ The backend API will run on [http://localhost:3001](http://localhost:3001).
 
 **Backend Endpoints:**
 - `GET /api/health` - Health check
-- `GET /api/menu` - Menu items with drink images
-- `GET /api/locations` - Upcoming pop-up locations
+- `GET /api/menu` - Menu items from Azure Cosmos DB
+- `GET /api/locations` - Upcoming pop-up locations from Azure Cosmos DB
 
 ### Frontend Setup (Next.js)
 
@@ -128,11 +155,14 @@ npm run dev -- -H 0.0.0.0
 
 ## Features
 
-- 🍵 **Menu Display** - Handcrafted matcha drinks with images
-- 📍 **Location Finder** - Upcoming pop-up locations
+- 🍵 **Menu Display** - Handcrafted matcha drinks with images stored in Azure Blob Storage
+- 📍 **Location Finder** - Upcoming pop-up locations managed via Azure Cosmos DB
 - 📱 **Mobile Responsive** - Optimized for all screen sizes
 - 🎨 **Hand-drawn Design** - Cartoonish, minimalist aesthetic with yellow/blue theme
 - 📧 **Contact** - Instagram and email integration
+- ☁️ **Cloud-Powered** - Azure Cosmos DB for scalable NoSQL data storage
+- 🖼️ **Image Storage** - Azure Blob Storage ready for CDN-delivered images
+- 🔄 **Real-time Updates** - Add/edit menu items via Azure Portal or Python scripts
 
 ## Tech Stack
 
@@ -147,6 +177,58 @@ npm run dev -- -H 0.0.0.0
 - Python 3.x
 - Flask 3.0.0
 - Flask-CORS 4.0.0
+- Gunicorn 21.2.0 (production server)
+
+**Azure Cloud Services:**
+- **Azure Cosmos DB** - NoSQL database for menu items and locations (serverless mode)
+- **Azure Blob Storage** - Image storage with CDN capabilities
+- **Azure SDK for Python**:
+  - `azure-cosmos` 4.5.1
+  - `azure-storage-blob` 12.19.0
+  - `azure-identity` 1.15.0 (for Managed Identity)
+
+**Development Tools:**
+- python-dotenv 1.0.0 (environment management)
+
+## Architecture
+
+```
+Frontend (Next.js)
+    ↓
+Flask REST API
+    ↓
+Azure Cosmos DB (Menu Items & Locations)
+    ↓
+Azure Blob Storage (Images - optional)
+```
+
+## Managing Data
+
+**Add Menu Items:**
+- Via Azure Portal Data Explorer (easiest)
+- Via Python scripts (see `backend/ADDING_ITEMS_GUIDE.md`)
+- Supports local images (frontend/public) or Azure Blob Storage
+
+**Update Prices/Items:**
+- Edit directly in Azure Portal
+- Use Python helper functions in `db_config.py`
+
+See `backend/ADDING_ITEMS_GUIDE.md` for complete documentation.
+
+## Deployment
+
+See `DEPLOYMENT.md` for detailed deployment instructions including:
+- Azure resource setup
+- Render.com deployment
+- Environment variable configuration
+- Production best practices
+
+## Documentation
+
+- **`backend/AZURE_SETUP.md`** - Azure resources setup guide
+- **`backend/ADDING_ITEMS_GUIDE.md`** - How to add/update menu items and images
+- **`backend/MIGRATION_SUMMARY.md`** - Database migration overview
+- **`DEPLOYMENT.md`** - Production deployment guide
 
 ## Learn More
 

@@ -1,9 +1,11 @@
 # BedHed Matcha Backend API
 # This file handles all the data for your website (menu items, locations, etc.)
-# Think of this as the "brain" that stores and sends information to your website
+# Now using Azure Cosmos DB for data storage instead of in-memory data
 
 from flask import Flask, jsonify
 from flask_cors import CORS
+from db_config import CosmosDB
+import os
 
 # Create the Flask app - this is what runs your backend server
 app = Flask(__name__)
@@ -12,36 +14,44 @@ app = Flask(__name__)
 # Without this, browsers would block the connection for security reasons
 CORS(app)
 
-# MENU DATA
-# This is where all your matcha drink information lives!
-# To add a new drink: copy one of these blocks and change the details
-# To change prices: just edit the "price" number
-# To change drink names/ingredients: edit the text in quotes
-menu_items = [
-    # Each drink needs: id (unique number), name, ingredients list, price, and image filename
+# Initialize database connection
+# This connects to Azure Cosmos DB to fetch menu items and locations
+try:
+    db = CosmosDB()
+    print("✓ Connected to Azure Cosmos DB")
+except Exception as e:
+    print(f"✗ Warning: Could not connect to database: {e}")
+    print("  The app will still run but won't have data until database is configured.")
+    db = None
+
+# LEGACY DATA (kept for reference and fallback)
+# This data is now stored in Azure Cosmos DB
+# To update menu/locations, use the database or create an admin interface
+# For fallback when database is not configured:
+FALLBACK_MENU_ITEMS = [
     {
-        "id": 1,  # Unique number for this drink (don't duplicate!)
-        "name": "Strawberry Matcha",  # Name that appears on the menu
-        "ingredients": ["Strawberry Puree", "Milk of Choice", "Matcha"],  # List of ingredients
-        "price": 7.00,  # Price in dollars (change this to update pricing)
-        "image": "/strawberry.png"  # Image filename (must match file in frontend/public folder)
+        "id": "1",
+        "name": "Strawberry Matcha",
+        "ingredients": ["Strawberry Puree", "Milk of Choice", "Matcha"],
+        "price": 7.00,
+        "image": "/strawberry.png"
     },
     {
-        "id": 2,
+        "id": "2",
         "name": "Earl Gray",
         "ingredients": ["Earl Gray Syrup", "Milk of Choice", "Matcha"],
         "price": 7.00,
         "image": "/earl-gray.png"
     },
     {
-        "id": 3,
+        "id": "3",
         "name": "Ein-Spanner",
         "ingredients": ["Milk of Choice", "Sweet Foam", "Matcha"],
         "price": 7.00,
         "image": "/ein-spanner.png"
     },
     {
-        "id": 4,
+        "id": "4",
         "name": "Orange Tonic",
         "ingredients": ["Orange Puree", "Tonic Water", "Matcha"],
         "price": 7.00,
@@ -49,17 +59,16 @@ menu_items = [
     }
 ]
 
-# Locations data
-locations = [
+FALLBACK_LOCATIONS = [
     {
-        "id": 1,
+        "id": "1",
         "date": "2025-01-15",
         "venue": "Deep Ellum Market",
         "address": "123 Main St, Dallas, TX",
         "time": "10am - 4pm"
     },
     {
-        "id": 2,
+        "id": "2",
         "date": "2025-01-28",
         "venue": "Plano Asian Night Market",
         "address": "456 Oak St",
@@ -80,16 +89,38 @@ def get_menu():
     """Returns the menu items to display on the website
     Developer note: This endpoint is called when the Menu section loads
     Business owner note: This sends your drink menu to the website
+    Now fetches from Azure Cosmos DB instead of in-memory data
     """
-    return jsonify(menu_items)
+    if db:
+        try:
+            menu_items = db.get_all_menu_items()
+            return jsonify(menu_items)
+        except Exception as e:
+            print(f"Error fetching menu from database: {e}")
+            # Fallback to static data if database fails
+            return jsonify(FALLBACK_MENU_ITEMS)
+    else:
+        # Database not configured, use fallback data
+        return jsonify(FALLBACK_MENU_ITEMS)
 
 @app.route('/api/locations')
 def get_locations():
     """Returns the pop-up locations to display on the website
     Developer note: This endpoint is called when the Locations section loads
     Business owner note: This sends your upcoming pop-up schedule to the website
+    Now fetches from Azure Cosmos DB instead of in-memory data
     """
-    return jsonify(locations)
+    if db:
+        try:
+            locations = db.get_all_locations()
+            return jsonify(locations)
+        except Exception as e:
+            print(f"Error fetching locations from database: {e}")
+            # Fallback to static data if database fails
+            return jsonify(FALLBACK_LOCATIONS)
+    else:
+        # Database not configured, use fallback data
+        return jsonify(FALLBACK_LOCATIONS)
 
 @app.route('/api/health')
 def health():
