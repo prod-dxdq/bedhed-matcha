@@ -14,17 +14,17 @@ const getApiBaseUrl = () => {
   
   if (typeof window !== 'undefined') {
     // When running in the browser locally (client-side):
-    // Use the same IP address as the website, but talk to port 3001 (backend)
+    // Use the same IP address as the website, but talk to port 3002 (backend)
     // Use https:// if the page is loaded over https, otherwise http://
     const protocol = window.location.protocol;
-    const url = `${protocol}//${window.location.hostname}:3001`;
+    const url = `${protocol}//${window.location.hostname}:3002`;
     console.log('Using local API:', url);
     return url;
   }
   // When running on the server during local development:
   // Use localhost since it's on the same computer
-  console.log('Using server API: http://localhost:3001');
-  return 'http://localhost:3001';
+  console.log('Using server API: http://localhost:3002');
+  return 'http://localhost:3002';
 };
 
 // FETCH MENU ITEMS

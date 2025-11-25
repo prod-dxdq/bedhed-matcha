@@ -4,7 +4,7 @@ Artisanal Matcha Pop-Up in Dallas, TX
 
 A responsive single-page application for an artisanal matcha pop-up business using Next.js 16 and React 19, featuring dynamic menu displays and mobile-first design with custom fonts and hand-drawn aesthetic elements to match brand identity across desktop and mobile devices.
 
-Built with a REST API using Flask 3.0 to manage menu items and pop-up locations, with CORS-enabled endpoints for seamless frontend-backend communication.
+Built with a REST API using ASP.NET Core to manage menu items and pop-up locations, with CORS-enabled endpoints for seamless frontend-backend communication.
 
 Deployed as a full-stack application to Render.com using Blueprint YAML configuration, implementing environment-based API routing for development and production environments.
 
@@ -13,19 +13,18 @@ Deployed as a full-stack application to Render.com using Blueprint YAML configur
 ## Project Structure
 
 - **frontend/** - Next.js 16 application with React 19 and Tailwind CSS 4
-- **backend/** - Flask Python API server with Azure Cosmos DB integration
+- **backend/** - ASP.NET Core C# API server with Azure Cosmos DB integration
 - **public/** - Static assets (images, logo, drink photos)
 
 ## Prerequisites
 
 - **Node.js** 18+ and npm (for frontend)
-- **Python** 3.8+ (for backend)
-- **pip** (Python package manager)
+- **.NET SDK** 8.0+ (for backend)
 - **Azure Account** (for database and storage - free student tier available)
 
 ## Getting Started
 
-### Backend Setup (Flask API with Azure Cosmos DB)
+### Backend Setup (ASP.NET Core API with Azure Cosmos DB)
 
 1. Navigate to the backend folder:
 ```bash
@@ -35,53 +34,39 @@ cd backend
 2. Set up Azure resources (one-time setup):
    - Create Azure Cosmos DB account (serverless mode)
    - Create Azure Storage Account for images
-   - See `backend/AZURE_SETUP.md` for detailed instructions
+   - See Azure Portal for credentials
 
 3. Configure environment variables:
 ```bash
-cp .env.example .env
-# Edit .env and add your Azure credentials:
-# - COSMOS_ENDPOINT
-# - COSMOS_KEY
-# - STORAGE_ACCOUNT_URL
-# - STORAGE_CONNECTION_STRING
+cp appsettings.example.json appsettings.json
+# Edit appsettings.json and add your Azure credentials:
+# - CosmosEndpoint: https://YOUR-ACCOUNT.documents.azure.com:443/
+# - CosmosKey: YOUR_PRIMARY_KEY
 ```
 
-4. Create a virtual environment (recommended):
+4. **Add .NET to PATH (Windows PowerShell):**
+```powershell
+$env:PATH = "C:\Program Files\dotnet;$env:PATH"
+```
+
+5. Restore NuGet packages:
 ```bash
-python -m venv venv
+dotnet restore
 ```
 
-5. Activate the virtual environment:
-   - **Windows (PowerShell)**:
-     ```powershell
-     .\venv\Scripts\Activate.ps1
-     ```
-   - **Windows (Command Prompt)**:
-     ```cmd
-     venv\Scripts\activate.bat
-     ```
-   - **macOS/Linux**:
-     ```bash
-     source venv/bin/activate
-     ```
-
-6. Install Python dependencies:
+6. Build the project:
 ```bash
-pip install -r requirements.txt
+dotnet build
 ```
 
-7. Initialize the database (first time only):
+7. Run the ASP.NET Core server:
 ```bash
-python init_db.py
+dotnet run
 ```
 
-8. Run the Flask server:
-```bash
-python app.py
-```
+The backend API will run on [http://localhost:3002](http://localhost:3002).
 
-The backend API will run on [http://localhost:3001](http://localhost:3001).
+**Note:** On Windows, you may need to add .NET to your PATH in each new terminal session, or add it permanently via System Environment Variables.
 
 **Backend Endpoints:**
 - `GET /api/health` - Health check
@@ -114,7 +99,7 @@ To run the full application, you need **both** servers running simultaneously:
 1. Open **Terminal 1** for the backend:
 ```bash
 cd backend
-python app.py
+dotnet run
 ```
 
 2. Open **Terminal 2** for the frontend:
@@ -136,7 +121,7 @@ To test the mobile-responsive site on your actual phone:
      ```
    - Look for "IPv4 Address" under your active network adapter (e.g., `192.168.1.100`)
 
-2. **Make sure both servers are running** (backend on port 3001, frontend on port 3000)
+2. **Make sure both servers are running** (backend on port 3002, frontend on port 3000)
 
 3. **Connect your phone to the same WiFi network** as your computer
 
@@ -174,28 +159,24 @@ npm run dev -- -H 0.0.0.0
 - Google Fonts (Permanent Marker, Indie Flower)
 
 **Backend:**
-- Python 3.x
-- Flask 3.0.0
-- Flask-CORS 4.0.0
-- Gunicorn 21.2.0 (production server)
+- .NET 8.0
+- ASP.NET Core (Minimal APIs)
+- C# 12
 
 **Azure Cloud Services:**
 - **Azure Cosmos DB** - NoSQL database for menu items and locations (serverless mode)
 - **Azure Blob Storage** - Image storage with CDN capabilities
-- **Azure SDK for Python**:
-  - `azure-cosmos` 4.5.1
-  - `azure-storage-blob` 12.19.0
-  - `azure-identity` 1.15.0 (for Managed Identity)
-
-**Development Tools:**
-- python-dotenv 1.0.0 (environment management)
+- **Azure SDK for .NET**:
+  - `Microsoft.Azure.Cosmos` 3.55.0
+  - `Azure.Identity` 1.17.1
+  - `Newtonsoft.Json` 13.0.4
 
 ## Architecture
 
 ```
 Frontend (Next.js)
     ↓
-Flask REST API
+ASP.NET Core REST API
     ↓
 Azure Cosmos DB (Menu Items & Locations)
     ↓
@@ -206,14 +187,12 @@ Azure Blob Storage (Images - optional)
 
 **Add Menu Items:**
 - Via Azure Portal Data Explorer (easiest)
-- Via Python scripts (see `backend/ADDING_ITEMS_GUIDE.md`)
+- Via C# methods in `CosmosDbService.cs`
 - Supports local images (frontend/public) or Azure Blob Storage
 
 **Update Prices/Items:**
 - Edit directly in Azure Portal
-- Use Python helper functions in `db_config.py`
-
-See `backend/ADDING_ITEMS_GUIDE.md` for complete documentation.
+- Use C# service methods in the backend
 
 ## Deployment
 
@@ -225,13 +204,12 @@ See `DEPLOYMENT.md` for detailed deployment instructions including:
 
 ## Documentation
 
-- **`backend/AZURE_SETUP.md`** - Azure resources setup guide
-- **`backend/ADDING_ITEMS_GUIDE.md`** - How to add/update menu items and images
-- **`backend/MIGRATION_SUMMARY.md`** - Database migration overview
 - **`DEPLOYMENT.md`** - Production deployment guide
+- Azure Portal - Manage database directly via Data Explorer
 
 ## Learn More
 
 - [Next.js Documentation](https://nextjs.org/docs)
-- [Flask Documentation](https://flask.palletsprojects.com/)
+- [ASP.NET Core Documentation](https://learn.microsoft.com/en-us/aspnet/core/)
+- [Azure Cosmos DB Documentation](https://learn.microsoft.com/en-us/azure/cosmos-db/)
 - [Tailwind CSS](https://tailwindcss.com/docs)
