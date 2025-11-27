@@ -104,7 +104,7 @@ export default function Home() {
                       </h4>
                       <div className="space-y-0.5 text-sm md:text-base text-blue-900 font-bold font-[family-name:var(--font-indie-flower)]">
                         <p>{location.address}</p>
-                        <p>{location.time} • {new Date(location.date).toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}</p>
+                        <p>{location.time} • {new Date(location.date + 'T00:00:00').toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' })}</p>
                       </div>
                     </div>
                   </div>
