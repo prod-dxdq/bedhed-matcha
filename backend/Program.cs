@@ -51,4 +51,6 @@ app.MapGet("/api/locations", async ([FromServices] CosmosDbService db) =>
     }
 });
 
-app.Run("http://0.0.0.0:3002");
+// Use PORT environment variable from Render, or default to 3002
+var port = Environment.GetEnvironmentVariable("PORT") ?? "3002";
+app.Run($"http://0.0.0.0:{port}");
