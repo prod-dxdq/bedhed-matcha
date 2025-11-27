@@ -12,20 +12,28 @@ public class CosmosDbService
 
     public CosmosDbService(IConfiguration configuration)
     {
+        Console.WriteLine("=== CosmosDbService Initialization ===");
+        
         string endpoint = configuration["CosmosEndpoint"] ?? 
                          Environment.GetEnvironmentVariable("COSMOS_ENDPOINT") ?? 
                          throw new InvalidOperationException("COSMOS_ENDPOINT is required");
         
+        Console.WriteLine($"Cosmos Endpoint: {endpoint}");
+        
         string? key = configuration["CosmosKey"] ?? 
                      Environment.GetEnvironmentVariable("COSMOS_KEY");
+
+        Console.WriteLine($"Cosmos Key present: {!string.IsNullOrEmpty(key)}");
 
         // Use key-based auth if available, otherwise use DefaultAzureCredential
         if (!string.IsNullOrEmpty(key))
         {
+            Console.WriteLine("Using key-based authentication");
             _client = new CosmosClient(endpoint, key);
         }
         else
         {
+            Console.WriteLine("Using DefaultAzureCredential");
             var credential = new DefaultAzureCredential();
             _client = new CosmosClient(endpoint, credential);
         }
