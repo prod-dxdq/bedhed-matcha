@@ -14,13 +14,21 @@ public class CosmosDbService
     {
         Console.WriteLine("=== CosmosDbService Initialization ===");
         
-        string endpoint = configuration["CosmosEndpoint"] ?? 
-                         Environment.GetEnvironmentVariable("COSMOS_ENDPOINT") ?? 
-                         throw new InvalidOperationException("COSMOS_ENDPOINT is required");
+        // Try multiple sources for endpoint
+        string? endpoint = configuration["CosmosEndpoint"] ?? 
+                          Environment.GetEnvironmentVariable("CosmosEndpoint") ??
+                          Environment.GetEnvironmentVariable("COSMOS_ENDPOINT");
+        
+        if (string.IsNullOrEmpty(endpoint))
+        {
+            throw new InvalidOperationException("CosmosEndpoint is required. Set it in appsettings.json or as an environment variable.");
+        }
         
         Console.WriteLine($"Cosmos Endpoint: {endpoint}");
         
+        // Try multiple sources for key
         string? key = configuration["CosmosKey"] ?? 
+                     Environment.GetEnvironmentVariable("CosmosKey") ??
                      Environment.GetEnvironmentVariable("COSMOS_KEY");
 
         Console.WriteLine($"Cosmos Key present: {!string.IsNullOrEmpty(key)}");
